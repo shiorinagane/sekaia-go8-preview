@@ -46,6 +46,29 @@
 /* 本文サイズ（about 本文と揃える） */
 .article-body { font-size: 1.6rem; }
 
+/* WP本文用ユーティリティ（旧 go8/css/go8.css と同値。share.css の u-mb10 系とは別命名） */
+.u-mb-xs { margin-bottom: 10px; }
+.u-mb-s  { margin-bottom: 20px; }
+.u-mb-m  { margin-bottom: 30px; }
+.u-mb-l  { margin-bottom: 40px; }
+.u-mb-xl { margin-bottom: 50px; }
+.u-mb-xxl { margin-bottom: 80px; }
+.u-center { text-align: center; }
+.u-link { text-decoration: underline; }
+
+/* ボタン（WP本文の .c-btn は modifier なし → 幅・余白をここで補う） */
+.article-body .c-btn {
+  text-align: center;
+  margin: 30px 0 50px;
+}
+.article-body .c-btn a {
+  width: 200px;
+  margin: 0 auto;
+  display: inline-block;
+  font-weight: 700;
+  color: #333;
+}
+
 /* リスト（● は赤→アンバー） */
 .go8__list li {
   position: relative;
