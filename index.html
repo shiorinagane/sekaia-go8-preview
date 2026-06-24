@@ -16,6 +16,8 @@
 <style>
 /* ===== GO8ページ用 新CSS（内蔵）===== */
 .main { background-color: #fff; }
+@media screen and (min-width:768px) { .breadcrumb { width: 960px; margin: 0 auto 20px; display: flex; flex-wrap: wrap; } .breadcrumb li:after { content: "＞"; display: inline-block; margin: 0 10px; } .breadcrumb li:last-child:after { display: none; } }
+@media screen and (max-width:767px) { .breadcrumb { padding: 10px 10px 0; margin-bottom: 20px; display: flex; flex-wrap: wrap; font-size: 1.1rem; } .breadcrumb li:after { content: "＞"; display: inline-block; margin: 0 10px; } .breadcrumb li:last-child:after { display: none; } }
 .c-page-ttl { font-size: 3rem; font-weight: 700; color: #222; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #e8e8e8; line-height: 1.4; }
 .go8__head2 { font-size: 2.4rem; font-weight: 700; color: #fff; text-align: center; background-color: #167977; padding: 8px 0; margin: 40px 0 20px; line-height: 1.4; }
 .go8__head3 { font-size: 1.8rem; font-weight: 700; color: #222; margin: 30px 0 12px; }
