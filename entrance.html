@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <!--
-  GO8ページ 移行プレビュー（オーストラリア出願センターのデザインに統合）／自己完結・配布用
-  ・go8.css はこのファイルに内蔵。本番の共通CSS(share.css/style.css)・画像はネット参照。
-  ・GitHub Pages 用：このファイルを公開リポジトリに index.html として置けば、URLで誰でも閲覧可。
-  ・移行する本文：下の「▼移行する本文▼ … ▲▲」の範囲が WP 固定ページ groupof8/entrance (id:1761) の中身。
+  GO8 → aus_center 下層ページ移行プレビュー（社内確認用）
+  本番想定URL: https://www.sekaia.co.jp/aus_center/groupof8/entrance
+  デザイン参照: client/SEKAIA/aus/theme/（参照のみ・上書き禁止）
+  移行本文: 下の「▼移行する本文▼ … ▲▲」→ WordPress 固定ページ groupof8/entrance / id:1761
 -->
 <head>
 <meta charset="utf-8">
@@ -14,84 +14,348 @@
 <link rel="stylesheet" href="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
+@charset "utf-8";
+/* ============================================================
+   GO8ページ（標準デザイン版・リニューアル叩き台）
+   既存の go8 本文クラスを、aus_center 共通デザインに合わせて再定義。
+   配色：赤 #cc2c1d → ティール #167977 / アンバー #ffbf00（共通トークン）
+   ※デプロイ時は theme/themes/aus/css/page/go8.css に置く想定（$page_id='go8'）
+   ============================================================ */
 
-/* ===== GO8ページ用 新CSS（内蔵）===== */
+/* ページ背景：共通 .main のベージュ(#efeae2)を白に上書き */
 .main { background-color: #fff; }
-@media screen and (min-width:768px) { .breadcrumb { width: 960px; margin: 0 auto 20px; display: flex; flex-wrap: wrap; } .breadcrumb li:after { content: "＞"; display: inline-block; margin: 0 10px; } .breadcrumb li:last-child:after { display: none; } }
-@media screen and (max-width:767px) { .breadcrumb { padding: 10px 10px 0; margin-bottom: 20px; display: flex; flex-wrap: wrap; font-size: 1.1rem; } .breadcrumb li:after { content: "＞"; display: inline-block; margin: 0 10px; } .breadcrumb li:last-child:after { display: none; } }
+
+/* パンくず（aus標準） */
+@media screen and (min-width:768px) {
+  .breadcrumb { width: 960px; margin: 0 auto 20px; display: flex; flex-wrap: wrap; }
+  .breadcrumb li:after { content: "＞"; display: inline-block; margin: 0 10px; }
+  .breadcrumb li:last-child:after { display: none; }
+}
+@media screen and (max-width:767px) {
+  .breadcrumb { padding: 10px 10px 0; margin-bottom: 20px; display: flex; flex-wrap: wrap; font-size: 1.1rem; }
+  .breadcrumb li:after { content: "＞"; display: inline-block; margin: 0 10px; }
+  .breadcrumb li:last-child:after { display: none; }
+}
+
+/* Go8セクション帯（旧 go8.php ヘッダー相当 → aus下層ページ用） */
+.go8-section {
+  background-color: #f8f5f0;
+  border-bottom: 3px solid #167977;
+  margin-bottom: 24px;
+}
+.go8-section__inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0 16px;
+}
+.go8-section__logo {
+  width: 220px;
+  max-width: 45%;
+  height: auto;
+  flex-shrink: 0;
+}
+.go8-section__lead {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0;
+}
+
+/* Go8ローカルナビ（旧 header-nav 相当） */
+.go8-local-nav {
+  background-color: #167977;
+}
+.go8-local-nav__inner {
+  width: 960px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.go8-local-nav a {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 1.4;
+  border-right: 1px solid rgba(255,255,255,.25);
+  text-decoration: none;
+}
+.go8-local-nav a:last-child { border-right: none; }
+.go8-local-nav a:hover { background-color: rgba(0,0,0,.12); }
+.go8-local-nav a.is-current {
+  background-color: #ffbf00;
+  color: #333;
+}
+
+/* 本文エリア（static.css の .article-body 相当） */
+@media screen and (min-width:768px) {
+  .main-content.-wide .article.go8 {
+    max-width: 750px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+  }
+}
+@media screen and (max-width:767px) {
+  .article.go8 { padding: 0 10px 40px; }
+}
+
 .article.go8 { font-size: 1.6rem; }
-.c-page-ttl { font-size: 3rem; font-weight: 700; color: #222; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #e8e8e8; line-height: 1.4; }
-.go8__head2 { font-size: 2.4rem; font-weight: 700; color: #fff; text-align: center; background-color: #167977; padding: 8px 0; margin: 40px 0 20px; line-height: 1.4; }
-.go8__head3 { font-size: 1.8rem; font-weight: 700; color: #222; margin: 30px 0 12px; }
-.go8__head4 { font-size: 1.6rem; font-weight: 700; color: #167977; margin: 20px 0 12px; }
+
+.c-page-ttl {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8e8e8;
+  line-height: 1.4;
+}
+
+.go8__head2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  background-color: #167977;
+  padding: 8px 0;
+  margin: 40px 0 20px;
+  line-height: 1.4;
+}
+
+.go8__head3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #222;
+  margin: 30px 0 12px;
+}
+
+/* h4（本文中の h4 / .go8__head4 共通） */
+.article.go8 h4,
+.go8__head4 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #167977;
+  margin: 20px 0 12px;
+  padding-left: 20px;
+  position: relative;
+}
+.article.go8 h4::before,
+.go8__head4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  background-color: #ffbf00;
+  border-radius: 50%;
+}
+
 .article.go8 p { margin: 0 0 16px; line-height: 1.8; }
 .go8__img { margin: 20px 0 40px; }
-.go8__img img, .uni-img { width: auto; max-width: 100%; height: auto; }
-.go8__list li { position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.7; }
-.go8__list li::before { content: ""; width: 8px; height: 8px; background-color: #ffbf00; border-radius: 50%; position: absolute; left: 2px; top: 9px; }
+.go8__img img,
+.uni-img { width: auto; max-width: 100%; height: auto; display: block; }
+
+.go8__list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+.go8__list li::before {
+  content: "";
+  width: 8px; height: 8px;
+  background-color: #ffbf00;
+  border-radius: 50%;
+  position: absolute; left: 2px; top: 9px;
+}
+
 .imgtxt { display: flex; gap: 30px; margin: 20px 0 40px; align-items: flex-start; }
 .imgtxt__txt { flex: 1; line-height: 1.8; }
 .imgtxt__img img { width: auto; max-width: 100%; height: auto; }
 .imgtxt__img--right { order: 2; }
-.red_waku { border: 2px solid #167977; background-color: #f8f5f0; padding: 16px 20px; text-align: center; border-radius: 5px; margin: 20px 0; }
-.p_red { font-size: 1.6rem; font-weight: 700; color: #167977; }
+
+.red_waku {
+  border: 2px solid #167977;
+  background-color: #f8f5f0;
+  padding: 16px 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+.p_red { font-size: 1.6rem; font-weight: 700; color: #167977; margin: 0; }
 .p_red + p { margin-top: 10px; }
+
+/* 各大学紹介ブロック */
 .w_waku { position: relative; }
+.w_waku .float_r {
+  float: right;
+  max-width: 120px;
+  height: auto;
+  margin: 0 0 12px 20px;
+}
+.w_waku .float_r.adjust1 { max-width: 50px; }
+.w_waku .float_r.adjust2 { max-width: 70px; }
+.w_waku .go8__head3 { clear: none; padding-right: 130px; min-height: 50px; }
+.w_waku .table_g8 { clear: both; margin-top: 16px; }
+
 .table_g8 { margin: 30px 0; }
-.table_g8 table { width: 100%; border-top: 1px solid #e8e8e8; border-left: 1px solid #e8e8e8; font-size: 1.4rem; }
-.table_g8 th { width: 140px; padding: 12px; background-color: #167977; color: #fff; font-weight: 700; text-align: center; border-right: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; }
-.table_g8 td { padding: 16px; background-color: #fff; text-align: left; border-right: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; }
+.table_g8 table {
+  width: 100%;
+  border-top: 1px solid #e8e8e8;
+  border-left: 1px solid #e8e8e8;
+  font-size: 1.4rem;
+}
+.table_g8 th {
+  width: 140px;
+  padding: 12px;
+  background-color: #167977;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  border-right: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+}
+.table_g8 td {
+  padding: 16px;
+  background-color: #fff;
+  text-align: left;
+  border-right: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+}
 td.gray { background-color: #f2f2f2; }
-.column2_g8 { display: inline-block; vertical-align: top; width: calc(50% - 16px); }
-.column2_g8 + .column2_g8 { margin-left: 30px; }
-.column2_g8 ul li { position: relative; padding-left: 20px; margin-bottom: 10px; }
-.column2_g8 ul li::before { content: ""; width: 8px; height: 8px; background-color: #ffbf00; border-radius: 50%; position: absolute; left: 2px; top: 8px; }
-.column2_g8 ul li img { max-height: 45px; width: auto; margin-top: 10px; }
+
+/* 2カラムリスト（出願ページ） */
+.column2_g8-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.column2_g8 {
+  flex: 1 1 calc(50% - 15px);
+  min-width: 260px;
+}
+.column2_g8 ul { list-style: none; padding: 0; margin: 0; }
+.column2_g8 ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.column2_g8 ul li::before {
+  content: "";
+  width: 8px; height: 8px;
+  background-color: #ffbf00;
+  border-radius: 50%;
+  position: absolute; left: 2px; top: 8px;
+}
+.column2_g8 ul li a { color: #333; text-decoration: none; }
+.column2_g8 ul li a:hover { color: #167977; }
+.column2_g8 ul li img {
+  display: block;
+  max-height: 45px;
+  width: auto;
+  margin-top: 8px;
+}
+
 .c-btn { text-align: center; margin: 30px 0 50px; }
-.c-btn a { display: inline-block; min-width: 240px; padding: 14px 30px; background-color: #ffbf00; color: #333; font-weight: 700; text-align: center; border-radius: 5px; }
+.c-btn a {
+  display: inline-block;
+  min-width: 240px;
+  padding: 14px 30px;
+  background-color: #ffbf00;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+}
 .c-btn a:hover { opacity: .85; }
+
 .l-float_r { float: right; margin: 0 0 30px 30px; max-width: 50%; }
 .u-center { text-align: center; }
-.u-mb-xs { margin-bottom: 10px; } .u-mb-s { margin-bottom: 20px; } .u-mb-m { margin-bottom: 30px; }
-.u-mb-l { margin-bottom: 40px; } .u-mb-xl { margin-bottom: 50px; } .u-mb-xxl { margin-bottom: 80px; }
-.u-link { text-decoration: underline; }
+.u-vt-s { margin-top: 20px; margin-bottom: 20px; }
+.u-mb-xs { margin-bottom: 10px; }
+.u-mb-s  { margin-bottom: 20px; }
+.u-mb-m  { margin-bottom: 30px; }
+.u-mb-l  { margin-bottom: 40px; }
+.u-mb-xl { margin-bottom: 50px; }
+.u-mb-xxl{ margin-bottom: 80px; }
+.u-link  { text-decoration: underline; }
+
 .go8__img--left { text-align: left; margin: 20px 0 40px; }
 .go8__img--left img { width: auto; max-width: 100%; height: auto; }
 .go8__img-sup { font-size: 1.3rem; color: #666; margin-top: 12px; line-height: 1.7; }
+
 .col-lg-6 { width: 100%; max-width: 600px; }
 .c-table { width: 100%; margin-bottom: 12px; border-collapse: collapse; font-size: 1.4rem; }
-.c-table th, .c-table td { border: 1px solid #e8e8e8; padding: 10px 15px; text-align: left; }
+.c-table th,
+.c-table td { border: 1px solid #e8e8e8; padding: 10px 15px; text-align: left; }
 .c-table th { background-color: #167977; color: #fff; font-weight: 700; }
 .c-table .lank { width: 72px; text-align: center; font-weight: 700; color: #167977; white-space: nowrap; }
 .c-table .gray { background-color: #f2f2f2; color: #333; }
 .c-table .lank.gray { color: #333; }
 .p_11_list { font-size: 1.1rem; color: #666; }
+
+.text-wrap { overflow: hidden; }
+.text-wrap p { margin: 20px 0; }
+.go8__btnlist { margin: 30px 0 50px; }
+
+.__preview-note {
+  background: #167977;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  padding: 6px;
+  font-family: sans-serif;
+}
+
 @media screen and (max-width: 767px) {
+  .go8-section__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 10px 12px;
+  }
+  .go8-section__logo { width: 180px; max-width: 100%; }
+  .go8-section__lead { font-size: 1.3rem; }
+  .go8-local-nav__inner {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .go8-local-nav a {
+    flex: 0 0 auto;
+    font-size: 1.2rem;
+    padding: 10px 14px;
+    white-space: nowrap;
+  }
   .c-page-ttl { font-size: 2rem; }
   .go8__head2 { font-size: 1.8rem; }
   .go8__head3 { font-size: 1.6rem; }
+  .w_waku .go8__head3 { padding-right: 0; min-height: 0; }
+  .w_waku .float_r { max-width: 80px; }
   .imgtxt { flex-direction: column; gap: 16px; }
   .imgtxt__img--right { order: 0; }
-  .column2_g8 { display: block; width: 100%; }
-  .column2_g8 + .column2_g8 { margin-left: 0; }
+  .column2_g8 { flex: 1 1 100%; }
+  .column2_g8 ul li img { max-height: 30px; }
   .l-float_r { float: none; max-width: 100%; margin: 0 0 20px; }
   .table_g8 th { width: 90px; padding: 8px; }
   .table_g8 td { padding: 10px; }
 }
 
-.u-vt-s { margin-top: 20px; margin-bottom: 20px; }
-.w_waku .float_r { position: absolute; right: 0; transform: translateY(20px); max-width: 120px; height: auto; }
-.w_waku .float_r.adjust1 { max-width: 50px; }
-.w_waku .float_r.adjust2 { max-width: 70px; }
-.text-wrap p { margin: 20px 0; }
-.go8__btnlist { margin: 30px 0 50px; }
-.__preview-note { background:#167977; color:#fff; text-align:center; font-size:12px; padding:6px; font-family:sans-serif; }
-
 </style>
-
 </head>
 <body>
-<div class="__preview-note">リニューアル案プレビュー：GO8「入学条件」をオーストラリア出願センターのデザインへ統合（社内確認用）</div>
+<div class="__preview-note">移行プレビュー：本番 /aus_center/groupof8/entrance を aus_center 標準デザインで表示（theme 参照・_work 叩き台）</div>
 
 <div class="wrap">
 <div class="site-belt">出願手数料無料！大学公認エージェント</div>
@@ -112,9 +376,9 @@ td.gray { background-color: #f2f2f2; }
       </ul>
     </nav>
     <ul class="contact-list">
-      <li class="disp-pc"><a href="https://www.sekaia.co.jp/aus_center/school">学校法人の皆さまへ</a>　｜　<a href="https://www.sekaia.co.jp/aus_center/for_int_highchool/" target="_blank">For School Advisors</a></li>
+      <li class="disp-pc"><a href="https://www.sekaia.co.jp/aus_center/school">学校法人の皆さまへ</a>　｜　<a href="https://www.sekaia.co.jp/aus_center/for_int_highchool/" target="_blank" rel="noopener">For School Advisors</a></li>
       <li style="clear: both;"><a href="tel:0120-033-470"><span class="c-icon -tel"></span>0120-033-470</a></li>
-      <li><a href="https://www.sekaia.co.jp/aus_center/counseling_form" target="_blank"><span class="c-icon -consul"></span>個別相談</a></li>
+      <li><a href="https://www.sekaia.co.jp/aus_center/counseling_form" target="_blank" rel="noopener"><span class="c-icon -consul"></span>個別相談</a></li>
     </ul>
     <div class="mail-button disp-pc"><a href="https://www.sekaia.co.jp/aus_center/contact_form">メール相談</a></div>
     <div class="briefing-button disp-pc"><a href="https://www.sekaia.co.jp/aus_center/about/seminar">留学説明会</a></div>
@@ -131,16 +395,33 @@ td.gray { background-color: #f2f2f2; }
 <main class="main">
   <ul class="breadcrumb">
     <li><a href="https://www.sekaia.co.jp/aus_center/">TOP</a></li>
+    <li><a href="index.html">Group of Eight (Go8)</a></li>
     <li>Go8の大学・大学院 入学条件</li>
   </ul>
+
+  <div class="go8-section">
+    <div class="go8-section__inner contents-inner">
+      <img class="go8-section__logo" src="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/go8/img/logo.png" width="353" height="97" alt="GROUP OF EIGHT AUSTRALIA オーストラリア トップ大学">
+      <p class="go8-section__lead">SEKAIAは Group of Eight の全8大学と提携を結ぶ<br class="disp-pc">国内唯一のエージェントです。</p>
+    </div>
+    <nav class="go8-local-nav" aria-label="Group of Eight">
+      <div class="go8-local-nav__inner">
+      <a href="index.html">Group of Eightとは</a>
+      <a href="entrance.html" class="is-current">入学条件</a>
+      <a href="university.html">各大学の紹介</a>
+      <a href="entry.html">GO8大学への出願</a>
+      <a href="https://www.sekaia.co.jp/aus_center/groupof8/inquire" target="_blank" rel="noopener">問合せ</a>
+      <a href="https://www.sekaia.co.jp/seminar2/list?tab=1" target="_blank" rel="noopener">イベント情報</a>
+      </div>
+    </nav>
+  </div>
 
   <div class="contents-inner cf">
     <div class="main-content -wide">
       <article class="article static go8">
-
         <h1 class="c-page-ttl">Go8の大学・大学院 入学条件</h1>
 
-        <!-- ▼▼▼ 移行する本文（この範囲を WordPress 固定ページ groupof8/entrance (id:1761) に入れる） ▼▼▼ -->
+        <!-- ▼▼▼ 移行する本文（この範囲を WordPress 固定ページ groupof8/entrance / id:1761 に入れる） ▼▼▼ -->
         <h2 class="go8__head2">Go8の大学・大学院 入学条件</h2>
         <div class="imgtxt">
           <div class="imgtxt__txt">英米の同レベルの大学・大学院に比べると、入学がしやすいのが利点です。語学力が足りない場合、条件付き合格の制度を取り入れており語学学校から始めることも可能です。これは、オーストラリアが留学生の受け入れを積極的に行っているためです。</div>
@@ -197,16 +478,19 @@ td.gray { background-color: #f2f2f2; }
   <div class="footer-to-top"><a href="#" class="js-smoothscroll">&nbsp;</a></div>
   <div class="footer-inner">
     <div class="footer-l disp-pc">
-      <div class="footer-company-name"><a href="https://www.sekaia.co.jp/" target="_blank">SEKAIA</a></div>
+      <div class="footer-company-name"><a href="https://www.sekaia.co.jp/" target="_blank" rel="noopener">SEKAIA</a></div>
       <div class="footer-company-info u-mb10">150-0002 東京都渋谷区渋谷1-11-1　ヒューリック渋谷美竹通りビル 6階<br>SEKAIA株式会社（旧社名：株式会社ICCコンサルタンツ）</div>
       <div class="footer-company-info u-mb10">一般社団法人海外留学協議会（JAOS）正会員</div>
       <div class="footer-company-info"><span class="c-icon -jcross"></span>一般社団法人留学サービス審査機構（J-CROSS）認証事業者</div>
-      <div class="footer-nav disp-pc"><a href="https://www.sekaia.co.jp/corporate/" target="_blank">会社概要</a>｜<a href="https://www.sekaia.co.jp/aus_center/faq">よくある質問</a></div>
+      <div class="footer-nav disp-pc"><a href="https://www.sekaia.co.jp/corporate/" target="_blank" rel="noopener">会社概要</a>｜<a href="https://www.sekaia.co.jp/aus_center/faq">よくある質問</a></div>
     </div>
+    <div class="footer-nav disp-sp"><a href="https://www.sekaia.co.jp/corporate/" target="_blank" rel="noopener">会社概要</a>｜<a href="https://www.sekaia.co.jp/aus_center/faq">よくある質問</a></div>
   </div>
 </footer>
 <div class="footer-copyright"> © SEKAIA Inc. All rights reserved.<br>※2025年11月1日付で株式会社ICCコンサルタンツからSEKAIA株式会社に社名変更いたしました。</div>
 
 </div>
+<script src="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/js/lib/jquery.min.js"></script>
+<script src="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/js/shared/shared.js"></script>
 </body>
 </html>
