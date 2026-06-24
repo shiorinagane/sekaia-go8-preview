@@ -3,6 +3,7 @@
 <!--
   GO8 → aus_center 下層ページ移行プレビュー（社内確認用）
   本番想定URL: https://www.sekaia.co.jp/aus_center/groupof8/university
+  枠: static.php / about と同じ（共通ヘッダー・パンくず・本文のみ）
   デザイン参照: client/SEKAIA/aus/theme/（参照のみ・上書き禁止）
   移行本文: 下の「▼移行する本文▼ … ▲▲」→ WordPress 固定ページ groupof8/university / id:1764
 -->
@@ -25,7 +26,7 @@
 /* ページ背景：共通 .main のベージュ(#efeae2)を白に上書き */
 .main { background-color: #fff; }
 
-/* パンくず（aus標準） */
+/* パンくず（static.css と同じ） */
 @media screen and (min-width:768px) {
   .breadcrumb { width: 960px; margin: 0 auto 20px; display: flex; flex-wrap: wrap; }
   .breadcrumb li:after { content: "＞"; display: inline-block; margin: 0 10px; }
@@ -35,64 +36,6 @@
   .breadcrumb { padding: 10px 10px 0; margin-bottom: 20px; display: flex; flex-wrap: wrap; font-size: 1.1rem; }
   .breadcrumb li:after { content: "＞"; display: inline-block; margin: 0 10px; }
   .breadcrumb li:last-child:after { display: none; }
-}
-
-/* Go8セクション帯（旧 go8.php ヘッダー相当 → aus下層ページ用） */
-.go8-section {
-  background-color: #f8f5f0;
-  border-bottom: 3px solid #167977;
-  margin-bottom: 24px;
-}
-.go8-section__inner {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 20px 0 16px;
-}
-.go8-section__logo {
-  width: 220px;
-  max-width: 45%;
-  height: auto;
-  flex-shrink: 0;
-}
-.go8-section__lead {
-  font-size: 1.5rem;
-  line-height: 1.7;
-  color: #333;
-  margin: 0;
-}
-
-/* Go8ローカルナビ（旧 header-nav 相当） */
-.go8-local-nav {
-  background-color: #167977;
-}
-.go8-local-nav__inner {
-  width: 960px;
-  max-width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-}
-.go8-local-nav a {
-  flex: 1 1 auto;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 8px;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-  line-height: 1.4;
-  border-right: 1px solid rgba(255,255,255,.25);
-  text-decoration: none;
-}
-.go8-local-nav a:last-child { border-right: none; }
-.go8-local-nav a:hover { background-color: rgba(0,0,0,.12); }
-.go8-local-nav a.is-current {
-  background-color: #ffbf00;
-  color: #333;
 }
 
 /* 本文エリア（static.css の .article-body 相当） */
@@ -319,25 +262,6 @@ td.gray { background-color: #f2f2f2; }
 }
 
 @media screen and (max-width: 767px) {
-  .go8-section__inner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px 10px 12px;
-  }
-  .go8-section__logo { width: 180px; max-width: 100%; }
-  .go8-section__lead { font-size: 1.3rem; }
-  .go8-local-nav__inner {
-    width: 100%;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
-  .go8-local-nav a {
-    flex: 0 0 auto;
-    font-size: 1.2rem;
-    padding: 10px 14px;
-    white-space: nowrap;
-  }
   .c-page-ttl { font-size: 2rem; }
   .go8__head2 { font-size: 1.8rem; }
   .go8__head3 { font-size: 1.6rem; }
@@ -355,7 +279,7 @@ td.gray { background-color: #f2f2f2; }
 </style>
 </head>
 <body>
-<div class="__preview-note">移行プレビュー：本番 /aus_center/groupof8/university を aus_center 標準デザインで表示（theme 参照・_work 叩き台）</div>
+<div class="__preview-note">移行プレビュー：/aus_center/groupof8/university を about と同じ aus 標準枠 + go8.css で表示</div>
 
 <div class="wrap">
 <div class="site-belt">出願手数料無料！大学公認エージェント</div>
@@ -395,26 +319,9 @@ td.gray { background-color: #f2f2f2; }
 <main class="main">
   <ul class="breadcrumb">
     <li><a href="https://www.sekaia.co.jp/aus_center/">TOP</a></li>
-    <li><a href="index.html">Group of Eight (Go8)</a></li>
+    <li><a href="index.html">Group of Eight (Go8) とは</a></li>
     <li>Go8全8大学の一覧・特徴</li>
   </ul>
-
-  <div class="go8-section">
-    <div class="go8-section__inner contents-inner">
-      <img class="go8-section__logo" src="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/go8/img/logo.png" width="353" height="97" alt="GROUP OF EIGHT AUSTRALIA オーストラリア トップ大学">
-      <p class="go8-section__lead">SEKAIAは Group of Eight の全8大学と提携を結ぶ<br class="disp-pc">国内唯一のエージェントです。</p>
-    </div>
-    <nav class="go8-local-nav" aria-label="Group of Eight">
-      <div class="go8-local-nav__inner">
-      <a href="index.html">Group of Eightとは</a>
-      <a href="entrance.html">入学条件</a>
-      <a href="university.html" class="is-current">各大学の紹介</a>
-      <a href="entry.html">GO8大学への出願</a>
-      <a href="https://www.sekaia.co.jp/aus_center/groupof8/inquire" target="_blank" rel="noopener">問合せ</a>
-      <a href="https://www.sekaia.co.jp/seminar2/list?tab=1" target="_blank" rel="noopener">イベント情報</a>
-      </div>
-    </nav>
-  </div>
 
   <div class="contents-inner cf">
     <div class="main-content -wide">
