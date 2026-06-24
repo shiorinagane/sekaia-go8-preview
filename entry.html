@@ -13,100 +13,40 @@
 <title>Go8の出願方法・時期（移行プレビュー）</title>
 <link rel="stylesheet" href="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/css/share/share.css">
 <link rel="stylesheet" href="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/style.css">
+<link rel="stylesheet" href="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/css/page/static.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 @charset "utf-8";
 /* ============================================================
    GO8ページ（標準デザイン版・リニューアル叩き台）
-   既存の go8 本文クラスを、aus_center 共通デザインに合わせて再定義。
-   配色：赤 #cc2c1d → ティール #167977 / アンバー #ffbf00（共通トークン）
+   ページ枠・見出しの基本値は theme/css/page/static.css に任せる（about と同じ）。
+   このファイルは Go8 本文専用クラスの配色・レイアウト調整のみ。
+   配色：赤 #cc2c1d → ティール #167977 / アンバー #ffbf00
    ※デプロイ時は theme/themes/aus/css/page/go8.css に置く想定（$page_id='go8'）
    ============================================================ */
 
-/* ページ背景：共通 .main のベージュ(#efeae2)を白に上書き */
-.main { background-color: #fff; }
-
-/* パンくず（static.css と同じ） */
-@media screen and (min-width:768px) {
-  .breadcrumb { width: 960px; margin: 0 auto 20px; display: flex; flex-wrap: wrap; }
-  .breadcrumb li:after { content: "＞"; display: inline-block; margin: 0 10px; }
-  .breadcrumb li:last-child:after { display: none; }
-}
-@media screen and (max-width:767px) {
-  .breadcrumb { padding: 10px 10px 0; margin-bottom: 20px; display: flex; flex-wrap: wrap; font-size: 1.1rem; }
-  .breadcrumb li:after { content: "＞"; display: inline-block; margin: 0 10px; }
-  .breadcrumb li:last-child:after { display: none; }
-}
-
-/* 本文エリア（static.css の .article-body 相当） */
-@media screen and (min-width:768px) {
-  .main-content.-wide .article.go8 {
-    max-width: 750px;
-    margin: 0 auto;
-    padding-bottom: 80px;
-  }
-}
-@media screen and (max-width:767px) {
-  .article.go8 { padding: 0 10px 40px; }
-}
-
-.article.go8 { font-size: 1.6rem; }
-
-.c-page-ttl {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e8e8e8;
-  line-height: 1.4;
-}
-
-.go8__head2 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-  background-color: #167977;
-  padding: 8px 0;
-  margin: 40px 0 20px;
-  line-height: 1.4;
-}
-
-.go8__head3 {
+/* WP本文が h2 に .go8__head3 を付けるケース → static.css の h3 相当に戻す */
+.article-body h2.go8__head3 {
   font-size: 1.8rem;
   font-weight: 700;
   color: #222;
-  margin: 30px 0 12px;
+  text-align: left;
+  padding: 0;
+  background-color: transparent;
+  margin: 30px 0 10px;
 }
 
-/* h4（本文中の h4 / .go8__head4 共通） */
-.article.go8 h4,
-.go8__head4 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #167977;
-  margin: 20px 0 12px;
-  padding-left: 20px;
-  position: relative;
-}
-.article.go8 h4::before,
-.go8__head4::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 10px;
-  height: 10px;
-  background-color: #ffbf00;
-  border-radius: 50%;
+@media screen and (max-width: 767px) {
+  .article-body h2.go8__head3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
 }
 
-.article.go8 p { margin: 0 0 16px; line-height: 1.8; }
-.go8__img { margin: 20px 0 40px; }
-.go8__img img,
-.uni-img { width: auto; max-width: 100%; height: auto; display: block; }
+/* 本文サイズ（about 本文と揃える） */
+.article-body { font-size: 1.6rem; }
 
+/* リスト（● は赤→アンバー） */
 .go8__list li {
   position: relative;
   padding-left: 20px;
@@ -121,11 +61,19 @@
   position: absolute; left: 2px; top: 9px;
 }
 
+/* 画像＋テキスト */
+.go8__img { margin: 20px 0 40px; }
+.go8__img img,
+.uni-img { width: auto; max-width: 100%; height: auto; display: block; }
+.go8__img--left { text-align: left; margin: 20px 0 40px; }
+.go8__img-sup { font-size: 1.3rem; color: #666; margin-top: 12px; line-height: 1.7; }
+
 .imgtxt { display: flex; gap: 30px; margin: 20px 0 40px; align-items: flex-start; }
 .imgtxt__txt { flex: 1; line-height: 1.8; }
 .imgtxt__img img { width: auto; max-width: 100%; height: auto; }
 .imgtxt__img--right { order: 2; }
 
+/* 強調ボックス（旧 red_waku → ティール枠） */
 .red_waku {
   border: 2px solid #167977;
   background-color: #f8f5f0;
@@ -137,7 +85,7 @@
 .p_red { font-size: 1.6rem; font-weight: 700; color: #167977; margin: 0; }
 .p_red + p { margin-top: 10px; }
 
-/* 各大学紹介ブロック */
+/* 各大学紹介 */
 .w_waku { position: relative; }
 .w_waku .float_r {
   float: right;
@@ -174,7 +122,6 @@
   border-right: 1px solid #e8e8e8;
   border-bottom: 1px solid #e8e8e8;
 }
-td.gray { background-color: #f2f2f2; }
 
 /* 2カラムリスト（出願ページ） */
 .column2_g8-wrap {
@@ -200,8 +147,6 @@ td.gray { background-color: #f2f2f2; }
   border-radius: 50%;
   position: absolute; left: 2px; top: 8px;
 }
-.column2_g8 ul li a { color: #333; text-decoration: none; }
-.column2_g8 ul li a:hover { color: #167977; }
 .column2_g8 ul li img {
   display: block;
   max-height: 45px;
@@ -209,35 +154,10 @@ td.gray { background-color: #f2f2f2; }
   margin-top: 8px;
 }
 
-.c-btn { text-align: center; margin: 30px 0 50px; }
-.c-btn a {
-  display: inline-block;
-  min-width: 240px;
-  padding: 14px 30px;
-  background-color: #ffbf00;
-  color: #333;
-  font-weight: 700;
-  text-align: center;
-  border-radius: 5px;
-  text-decoration: none;
-}
-.c-btn a:hover { opacity: .85; }
-
 .l-float_r { float: right; margin: 0 0 30px 30px; max-width: 50%; }
-.u-center { text-align: center; }
 .u-vt-s { margin-top: 20px; margin-bottom: 20px; }
-.u-mb-xs { margin-bottom: 10px; }
-.u-mb-s  { margin-bottom: 20px; }
-.u-mb-m  { margin-bottom: 30px; }
-.u-mb-l  { margin-bottom: 40px; }
-.u-mb-xl { margin-bottom: 50px; }
-.u-mb-xxl{ margin-bottom: 80px; }
-.u-link  { text-decoration: underline; }
 
-.go8__img--left { text-align: left; margin: 20px 0 40px; }
-.go8__img--left img { width: auto; max-width: 100%; height: auto; }
-.go8__img-sup { font-size: 1.3rem; color: #666; margin-top: 12px; line-height: 1.7; }
-
+/* ランキング表 */
 .col-lg-6 { width: 100%; max-width: 600px; }
 .c-table { width: 100%; margin-bottom: 12px; border-collapse: collapse; font-size: 1.4rem; }
 .c-table th,
@@ -249,7 +169,6 @@ td.gray { background-color: #f2f2f2; }
 .p_11_list { font-size: 1.1rem; color: #666; }
 
 .text-wrap { overflow: hidden; }
-.text-wrap p { margin: 20px 0; }
 .go8__btnlist { margin: 30px 0 50px; }
 
 .__preview-note {
@@ -262,9 +181,6 @@ td.gray { background-color: #f2f2f2; }
 }
 
 @media screen and (max-width: 767px) {
-  .c-page-ttl { font-size: 2rem; }
-  .go8__head2 { font-size: 1.8rem; }
-  .go8__head3 { font-size: 1.6rem; }
   .w_waku .go8__head3 { padding-right: 0; min-height: 0; }
   .w_waku .float_r { max-width: 80px; }
   .imgtxt { flex-direction: column; gap: 16px; }
@@ -326,8 +242,9 @@ td.gray { background-color: #f2f2f2; }
   <div class="contents-inner cf">
     <div class="main-content -wide">
       <article class="article static go8">
-        <h1 class="c-page-ttl">Go8の出願方法・時期</h1>
+        <h1>Go8の出願方法・時期</h1>
 
+        <div class="article-body">
         <!-- ▼▼▼ 移行する本文（この範囲を WordPress 固定ページ groupof8/entry / id:1766 に入れる） ▼▼▼ -->
         <h2 class="go8__head2">Group of Eightへの大学への出願</h2>
         <div class="go8__head3">Go8の大学・大学院への留学</div>
@@ -388,6 +305,7 @@ td.gray { background-color: #f2f2f2; }
         </div>
         <div class="c-btn"><a href="https://www.sekaia.co.jp/form/request/input/mail/university" target="_blank" rel="noopener">カウンセリング予約はこちら</a></div>
         <!-- ▲▲▲ 移行する本文ここまで ▲▲▲ -->
+        </div>
 
       </article>
     </div>
