@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!--
+  GO8ページ 移行プレビュー（オーストラリア出願センターのデザインに統合）／自己完結・配布用
+  ・go8.css はこのファイルに内蔵。本番の共通CSS(share.css/style.css)・画像はネット参照。
+  ・GitHub Pages 用：このファイルを公開リポジトリに index.html として置けば、URLで誰でも閲覧可。
+  ・移行する本文：下の「▼移行する本文▼ … ▲▲」の範囲が WP 固定ページ groupof8 (id:1781) の中身。
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Group of Eight (Go8) とは（移行プレビュー）</title>
+<link rel="stylesheet" href="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/css/share/share.css">
+<link rel="stylesheet" href="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ===== GO8ページ用 新CSS（内蔵）===== */
+.main { background-color: #fff; }
+.c-page-ttl { font-size: 3rem; font-weight: 700; color: #222; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #e8e8e8; line-height: 1.4; }
+.go8__head2 { font-size: 2.4rem; font-weight: 700; color: #fff; text-align: center; background-color: #167977; padding: 8px 0; margin: 40px 0 20px; line-height: 1.4; }
+.go8__head3 { font-size: 1.8rem; font-weight: 700; color: #222; margin: 30px 0 12px; }
+.go8__head4 { font-size: 1.6rem; font-weight: 700; color: #167977; margin: 20px 0 12px; }
+.article.go8 p { margin: 0 0 16px; line-height: 1.8; }
+.go8__img { margin: 20px 0 40px; }
+.go8__img img, .uni-img { width: auto; max-width: 100%; height: auto; }
+.go8__list li { position: relative; padding-left: 20px; margin-bottom: 10px; line-height: 1.7; }
+.go8__list li::before { content: ""; width: 8px; height: 8px; background-color: #ffbf00; border-radius: 50%; position: absolute; left: 2px; top: 9px; }
+.imgtxt { display: flex; gap: 30px; margin: 20px 0 40px; align-items: flex-start; }
+.imgtxt__txt { flex: 1; line-height: 1.8; }
+.imgtxt__img img { width: auto; max-width: 100%; height: auto; }
+.imgtxt__img--right { order: 2; }
+.red_waku { border: 2px solid #167977; background-color: #f8f5f0; padding: 16px 20px; text-align: center; border-radius: 5px; margin: 20px 0; }
+.p_red { font-size: 1.6rem; font-weight: 700; color: #167977; }
+.p_red + p { margin-top: 10px; }
+.w_waku { position: relative; }
+.table_g8 { margin: 30px 0; }
+.table_g8 table { width: 100%; border-top: 1px solid #e8e8e8; border-left: 1px solid #e8e8e8; font-size: 1.4rem; }
+.table_g8 th { width: 140px; padding: 12px; background-color: #167977; color: #fff; font-weight: 700; text-align: center; border-right: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; }
+.table_g8 td { padding: 16px; background-color: #fff; text-align: left; border-right: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; }
+td.gray { background-color: #f2f2f2; }
+.column2_g8 { display: inline-block; vertical-align: top; width: calc(50% - 16px); }
+.column2_g8 + .column2_g8 { margin-left: 30px; }
+.column2_g8 ul li { position: relative; padding-left: 20px; margin-bottom: 10px; }
+.column2_g8 ul li::before { content: ""; width: 8px; height: 8px; background-color: #ffbf00; border-radius: 50%; position: absolute; left: 2px; top: 8px; }
+.column2_g8 ul li img { max-height: 45px; width: auto; margin-top: 10px; }
+.c-btn { text-align: center; margin: 30px 0 50px; }
+.c-btn a { display: inline-block; min-width: 240px; padding: 14px 30px; background-color: #ffbf00; color: #333; font-weight: 700; text-align: center; border-radius: 5px; }
+.c-btn a:hover { opacity: .85; }
+.l-float_r { float: right; margin: 0 0 30px 30px; max-width: 50%; }
+.u-center { text-align: center; }
+.u-mb-xs { margin-bottom: 10px; } .u-mb-s { margin-bottom: 20px; } .u-mb-m { margin-bottom: 30px; }
+.u-mb-l { margin-bottom: 40px; } .u-mb-xl { margin-bottom: 50px; } .u-mb-xxl { margin-bottom: 80px; }
+.u-link { text-decoration: underline; }
+.go8__img--left { text-align: left; margin: 20px 0 40px; }
+.go8__img--left img { width: auto; max-width: 100%; height: auto; }
+.go8__img-sup { font-size: 1.3rem; color: #666; margin-top: 12px; line-height: 1.7; }
+.col-lg-6 { width: 100%; max-width: 600px; }
+.c-table { width: 100%; margin-bottom: 12px; border-collapse: collapse; font-size: 1.4rem; }
+.c-table th, .c-table td { border: 1px solid #e8e8e8; padding: 10px 15px; text-align: left; }
+.c-table th { background-color: #167977; color: #fff; font-weight: 700; }
+.c-table .lank { width: 72px; text-align: center; font-weight: 700; color: #167977; white-space: nowrap; }
+.c-table .gray { background-color: #f2f2f2; color: #333; }
+.c-table .lank.gray { color: #333; }
+.p_11_list { font-size: 1.1rem; color: #666; }
+@media screen and (max-width: 767px) {
+  .c-page-ttl { font-size: 2rem; }
+  .go8__head2 { font-size: 1.8rem; }
+  .go8__head3 { font-size: 1.6rem; }
+  .imgtxt { flex-direction: column; gap: 16px; }
+  .imgtxt__img--right { order: 0; }
+  .column2_g8 { display: block; width: 100%; }
+  .column2_g8 + .column2_g8 { margin-left: 0; }
+  .l-float_r { float: none; max-width: 100%; margin: 0 0 20px; }
+  .table_g8 th { width: 90px; padding: 8px; }
+  .table_g8 td { padding: 10px; }
+}
+.__preview-note { background:#167977; color:#fff; text-align:center; font-size:12px; padding:6px; font-family:sans-serif; }
+</style>
+</head>
+<body>
+<div class="__preview-note">リニューアル案プレビュー：GO8ページをオーストラリア出願センターのデザインへ統合（社内確認用）</div>
+
+<div class="wrap">
+<div class="site-belt">出願手数料無料！大学公認エージェント</div>
+<header class="header">
+  <div class="header-inner">
+    <div class="header-logo"><a href="https://www.sekaia.co.jp/aus_center/"><img src="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/img/site_logo.png" alt="オーストラリア大学出願センター"></a></div>
+  </div>
+  <div class="menu js-menu">
+    <div class="header-message disp-pc">オーストラリアの大学・大学院留学に興味のある全ての方のご相談に無料で対応します</div>
+    <nav class="navigation">
+      <ul>
+        <li class="disp-pc"><a href="https://www.sekaia.co.jp/aus_center/about">オーストラリア大学出願センターとは</a></li>
+        <li><a href="https://www.sekaia.co.jp/aus_center/university">大学一覧</a></li>
+        <li><a href="https://www.sekaia.co.jp/aus_center/tips/flow">大学留学の流れ</a></li>
+        <li><a href="https://www.sekaia.co.jp/aus_center/tips/cost">留学費用</a></li>
+        <li><a href="https://www.sekaia.co.jp/aus_center/voice">体験談</a></li>
+        <li><a href="https://www.sekaia.co.jp/aus_center/tips">知っておきたい留学情報</a></li>
+      </ul>
+    </nav>
+    <ul class="contact-list">
+      <li class="disp-pc"><a href="https://www.sekaia.co.jp/aus_center/school">学校法人の皆さまへ</a>　｜　<a href="https://www.sekaia.co.jp/aus_center/for_int_highchool/" target="_blank">For School Advisors</a></li>
+      <li style="clear: both;"><a href="tel:0120-033-470"><span class="c-icon -tel"></span>0120-033-470</a></li>
+      <li><a href="https://www.sekaia.co.jp/aus_center/counseling_form" target="_blank"><span class="c-icon -consul"></span>個別相談</a></li>
+    </ul>
+    <div class="mail-button disp-pc"><a href="https://www.sekaia.co.jp/aus_center/contact_form">メール相談</a></div>
+    <div class="briefing-button disp-pc"><a href="https://www.sekaia.co.jp/aus_center/about/seminar">留学説明会</a></div>
+  </div>
+  <div class="menu-trigger-wrap disp-sp">
+    <div class="menu-trigger js-menuOpen">
+      <span class="line"></span><span class="line"></span><span class="line"></span>
+      <div class="menu-trigger-txt -open">MENU</div>
+      <div class="menu-trigger-txt -close">CLOSE</div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <ul class="breadcrumb">
+    <li><a href="https://www.sekaia.co.jp/aus_center/">TOP</a></li>
+    <li>Group of Eight (Go8) とは</li>
+  </ul>
+
+  <div class="contents-inner cf">
+    <div class="main-content -wide">
+      <article class="article static go8">
+
+        <h1 class="c-page-ttl">Group of Eight (Go8) とは</h1>
+
+        <!-- ▼▼▼ 移行する本文（この範囲を WordPress 固定ページ groupof8 / id:1781 に入れる） ▼▼▼ -->
+        <h2 class="go8__head2">Go8（グループオブエイト）とは</h2>
+        <div class="imgtxt">
+          <div class="imgtxt__txt">オーストラリア国内の大学の中で、特に優れたトップ8校がGroup of Eight（以下Go8）。これら8大学は、医療や科学技術などの分野の研究に力を入れており、それらの成果に基づいた教育を提供していることで知られています。オーストラリア国内だけでなく世界各国の優秀な学生からも注目されているGroup of Eight。もちろん世界中のトップレベルの企業からも高い評価を得ています。</div>
+          <div class="imgtxt__img imgtxt__img--right"><img loading="lazy" decoding="async" src="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/go8/img/image.png" width="230" height="152" alt=""></div>
+        </div>
+        <h2 class="go8__head3">Go8の大学</h2>
+        <div class="go8__img go8__img--left">
+          <img loading="lazy" decoding="async" src="https://www.sekaia.co.jp/aus_center/wp-content/themes/aus/go8/img/map.png" width="565" height="283" alt="">
+          <div class="go8__img-sup">※SEKAIAはGo8の同8大学と提携している、国内唯一のエージェントです。<br>　より多くの優秀な学生に名門校への留学の機会を提供しています。</div>
+        </div>
+
+        <h2 class="go8__head2">Go8の特徴</h2>
+        <ul class="go8__list u-mb-xl">
+          <li>8大学は相互に協力し合い、オーストラリアの大学研究や大学教育の向上を行っていくことも目的の一つとしています。</li>
+          <li>他大学に比べ、学生数に対するスタッフの割合が高く、より目の届いた教育環境を提供しており、他大学に比べ留学生の学習結果も、地元の学生と遜色のない結果となっています。</li>
+          <li>リサーチの結果に基づいたカリキュラムを構築することにより、より高いレベルの実践的な教育の提供を行っています。</li>
+          <li>8大学は、様々なランキングにおいて、常に世界トップにランキングしています。</li>
+          <li>他の英語圏の国の名門校に比べ、入学がしやすくなっています。</li>
+        </ul>
+
+        <h2 class="go8__head2">世界の大学ランキング</h2>
+        <p class="u-mb-s">世界でも評価の高いオーストラリアの大学</p>
+
+        <div class="col-lg-6">
+          <h3 class="go8__head3" style="margin-bottom: 20px;">QS World University Rankings 2024</h3>
+          <table class="c-table">
+            <tbody>
+              <tr><td class="lank">14位</td><td><a href="https://www.sekaia.co.jp/aus_center/university/メルボルン大学">メルボルン大学</a></td></tr>
+              <tr><td class="lank">19位</td><td><a href="https://www.sekaia.co.jp/aus_center/university/シドニー大学">シドニー大学</a></td></tr>
+              <tr><td class="lank">19位</td><td><a href="https://www.sekaia.co.jp/aus_center/university/ニューサウスウェールズ大学">ニューサウスウェールズ大学</a></td></tr>
+              <tr><td class="lank gray">28位</td><td class="gray">東京大学</td></tr>
+              <tr><td class="lank">34位</td><td><a href="https://www.sekaia.co.jp/aus_center/university/オーストラリア国立大学">オーストラリア国立大学</a></td></tr>
+              <tr><td class="lank">42位</td><td><a href="https://www.sekaia.co.jp/aus_center/university/モナッシュ大学">モナッシュ大学</a></td></tr>
+              <tr><td class="lank">43位</td><td><a href="https://www.sekaia.co.jp/aus_center/university/クイーンズランド大学">クイーンズランド大学</a></td></tr>
+              <tr><td class="lank gray">46位</td><td class="gray">京都大学</td></tr>
+              <tr><td class="lank">72位</td><td><a href="https://www.sekaia.co.jp/aus_center/university/西オーストラリア大学">西オーストラリア大学</a></td></tr>
+              <tr><td class="lank gray">80位</td><td class="gray">大阪大学</td></tr>
+              <tr><td class="lank">89位</td><td><a href="https://www.sekaia.co.jp/aus_center/university/アデレード大学">アデレード大学</a></td></tr>
+            </tbody>
+          </table>
+          <p class="p_11_list" style="text-align: right;">2023年7月3日現在</p>
+        </div>
+
+        <div class="c-btn"><a href="https://www.sekaia.co.jp/aus_center/tips/ranking" target="_blank" rel="noopener">くわしくはこちら</a></div>
+        <!-- ▲▲▲ 移行する本文ここまで ▲▲▲ -->
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<div class="float_btn">
+  <div class="btn box_link"><span class="icon consul"></span>個別相談<a href="https://www.sekaia.co.jp/aus_center/counseling_form">btn</a></div>
+  <div class="btn box_link"><span class="icon seminar"></span>留学説明会<a href="https://www.sekaia.co.jp/aus_center/about/seminar">btn</a></div>
+  <div class="btn box_link"><span class="icon mail"></span>メール相談<a href="https://www.sekaia.co.jp/aus_center/contact_form">btn</a></div>
+</div>
+
+<footer class="footer">
+  <div class="footer-to-top"><a href="#" class="js-smoothscroll">&nbsp;</a></div>
+  <div class="footer-inner">
+    <div class="footer-l disp-pc">
+      <div class="footer-company-name"><a href="https://www.sekaia.co.jp/" target="_blank">SEKAIA</a></div>
+      <div class="footer-company-info u-mb10">150-0002 東京都渋谷区渋谷1-11-1　ヒューリック渋谷美竹通りビル 6階<br>SEKAIA株式会社（旧社名：株式会社ICCコンサルタンツ）</div>
+      <div class="footer-company-info u-mb10">一般社団法人海外留学協議会（JAOS）正会員</div>
+      <div class="footer-company-info"><span class="c-icon -jcross"></span>一般社団法人留学サービス審査機構（J-CROSS）認証事業者</div>
+      <div class="footer-nav disp-pc"><a href="https://www.sekaia.co.jp/corporate/" target="_blank">会社概要</a>｜<a href="https://www.sekaia.co.jp/aus_center/faq">よくある質問</a></div>
+    </div>
+  </div>
+</footer>
+<div class="footer-copyright"> © SEKAIA Inc. All rights reserved.<br>※2025年11月1日付で株式会社ICCコンサルタンツからSEKAIA株式会社に社名変更いたしました。</div>
+
+</div>
+</body>
+</html>
